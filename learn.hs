@@ -11,3 +11,7 @@ rightTriangle = [ (a,b,c) | c <- [1..10], b <- [1..c], a <- [1..b], a^2 + b^2 ==
 factorial :: (Integral a) => a -> a
 factorial 0 = 1
 factorial n = n * factorial(n-1)
+
+-- d takes a distance, x, y, and z take speeds. determines how far z travels back and forth between a and b over the given distance at the given speeds
+flightDistance :: (Integral b, RealFrac a) => a -> a -> a -> a -> b
+flightDistance d x y z = truncate(d / (x + y) * z) 
