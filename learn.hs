@@ -4,8 +4,9 @@ negativenum n = if n < 0
                 then True
                 else False
 
--- Displays the length of sides that make up a right triangle with a perimeter of 24
-rightTriangle = [ (a,b,c) | c <- [1..10], b <- [1..c], a <- [1..b], a^2 + b^2 == c^2, a+b+c == 24]
+-- Displays the length of sides that make up a right triangle with a given perimeter and range
+rightTriangle :: Int -> Int -> [(Int, Int, Int)]
+rightTriangle p r = [ (a,b,c) | c <- [1..r], b <- [1..c], a <- [1..b], a^2 + b^2 == c^2, a+b+c == p]
 
 -- Recursive factorial example with type constraints and pattern matching
 factorial :: (Integral a) => a -> a
@@ -23,9 +24,8 @@ exsum n = sum[2**x | x <- [1..n]] + exsum(n-1)
 
 -- fizzbuzz
 fizzbuzz :: Int -> String
-{-fizzbuzz n = [x | x <- n]-}
 fizzbuzz n
     | n `mod` 15 == 0 = "FizzBuzz"
-    | n `mod` 5 == 0  = "Buzz"
-    | n `mod` 3 == 0  = "Fizz"
+    | n `mod` 5  == 0 = "Buzz"
+    | n `mod` 3  == 0 = "Fizz"
     | otherwise       = show n
